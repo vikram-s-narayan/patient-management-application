@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+//
+import React, { useState } from "react";
+import PatientList from "./components/PatientList";
+import CreatePatient from "./components/CreatePatient";
+import SearchPatient from "./components/SearchPatient";
+import UpdatePatient from "./components/UpdatePatient";
 
-function App() {
+const App = () => {
+  const [activeTab, setActiveTab] = useState("searchPatient");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <div style={{ marginBottom: "20px" }}>
+        <button className="button" onClick={() => setActiveTab("listPatients")}>
+          List Patients
+        </button>
+        <button
+          className="button"
+          onClick={() => setActiveTab("createPatient")}
         >
-          Learn React
-        </a>
-      </header>
+          Create Patient
+        </button>
+        <button
+          className="button"
+          onClick={() => setActiveTab("searchPatient")}
+        >
+          Search Patient
+        </button>
+        <button
+          className="button"
+          onClick={() => setActiveTab("updatePatient")}
+        >
+          Update Patient
+        </button>
+      </div>
+      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+        {activeTab === "listPatients" && (
+          <div>
+            <PatientList />
+          </div>
+        )}
+        {activeTab === "createPatient" && (
+          <div>
+            <CreatePatient />
+          </div>
+        )}
+        {activeTab === "searchPatient" && (
+          <div>
+            <SearchPatient />
+          </div>
+        )}
+        {activeTab === "updatePatient" && (
+          <div>
+            <UpdatePatient />
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
