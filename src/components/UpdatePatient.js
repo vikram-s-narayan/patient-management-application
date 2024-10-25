@@ -9,7 +9,6 @@ const UpdatePatient = () => {
 
   const searchPatients = async () => {
     try {
-      alert("Searching for patients with name: " + searchName);
       const response = await axios.get(
         `https://hapi.fhir.org/baseR4/Patient?name=${searchName}`
       );
@@ -36,7 +35,6 @@ const UpdatePatient = () => {
         `https://hapi.fhir.org/baseR4/Patient/${selectedPatient.id}`,
         updatedDetails
       );
-      alert("Patient details updated successfully");
     } catch (error) {
       console.error("Error updating patient details:", error);
     }
